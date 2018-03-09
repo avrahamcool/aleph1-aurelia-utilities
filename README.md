@@ -2,8 +2,9 @@
 an Aurelia plugin for Model DirtyTracking, Service AutoState tracking and more.
 
 ## usage:
-import { BaseModel, dirtyTrack } from 'aleph1-aurelia-utilities';
- ```
+ ```js
+	import { BaseModel, dirtyTrack } from 'aleph1-aurelia-utilities';
+
 	export class SomeModel extends BaseModel
 	{
 		@dirtyTrack() someEmptyString = '';
