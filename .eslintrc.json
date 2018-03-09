@@ -1,0 +1,10 @@
+{
+	"$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/eslintrc.json",
+	"extends": "./node_modules/aurelia-tools/.eslintrc.json",
+	"rules":
+	{
+		"indent": ["error", "tab", { "ObjectExpression": "first", "CallExpression": { "arguments": 0 } }],
+		"brace-style": ["error", "allman", { "allowSingleLine": true }],
+		"curly": ["error", "multi-or-nest"]
+	}
+}
