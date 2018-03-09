@@ -19,7 +19,7 @@ gulp.task('bump-version', function()
 // from git commit messages
 gulp.task('changelog', function(callback)
 {
-	var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+	const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
 	return changelog(
 	{
@@ -35,11 +35,5 @@ gulp.task('changelog', function(callback)
 // calls the listed sequence of tasks in order
 gulp.task('prepare-release', function(callback)
 {
-	return runSequence(
-		'build',
-		'lint',
-		'bump-version',
-		'changelog',
-		callback
-	);
+	return runSequence('lint', 'build', 'changelog', 'bump-version', callback);
 });
