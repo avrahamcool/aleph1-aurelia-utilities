@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 exports.base = function()
 {
@@ -25,28 +25,28 @@ exports.base = function()
 
 exports.commonjs = function()
 {
-	var options = exports.base();
+	const options = exports.base();
 	options.plugins.push('transform-es2015-modules-commonjs');
 	return options;
 };
 
 exports.amd = function()
 {
-	var options = exports.base();
+	const options = exports.base();
 	options.plugins.push('transform-es2015-modules-amd');
 	return options;
 };
 
 exports.system = function()
 {
-	var options = exports.base();
+	const options = exports.base();
 	options.plugins.push('transform-es2015-modules-systemjs');
 	return options;
 };
 
 exports.es2015 = function()
 {
-	var options = exports.base();
+	const options = exports.base();
 	options.presets = ['stage-1'];
 	return options;
 };
