@@ -1,11 +1,13 @@
 import { ModelMetadata } from './model-metadata';
 import { metadata as Metadata } from 'aurelia-metadata';
+import { BaseModel } from './base-model';
 
 export function dirtyTrack(defaultValue)
 {
 	return function(target, property, descriptor)
 	{
 		if (!property) throw Error('dirtyTrack Decorator should be used on property only!');
+		if (!(target instanceof BaseModel)) throw Error('dirtyTrack decorator should be applied only in class inheriting from BaseModel');
 
 		//babel passes the initializer - but TS does not
 		if (!defaultValue && descriptor && typeof descriptor.initializer === 'function')

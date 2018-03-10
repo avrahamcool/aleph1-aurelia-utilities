@@ -1,4 +1,4 @@
-import { SomeModel } from './some-model';
+import { SomeModel } from '../models/some-model';
 
 describe('Dirty tracking a model', () =>
 {

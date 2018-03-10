@@ -1,8 +1,5 @@
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
-const paths = require('../paths');
-const changelog = require('conventional-changelog');
-const fs = require('fs');
 const bump = require('gulp-bump');
 const args = require('../args');
 
@@ -15,25 +12,8 @@ gulp.task('bump-version', function()
 		.pipe(gulp.dest('./'));
 });
 
-// generates the CHANGELOG.md file based on commit
-// from git commit messages
-gulp.task('changelog', function(callback)
-{
-	const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
-
-	return changelog(
-	{
-		repository: pkg.repository.url,
-		version: pkg.version,
-		file: paths.doc + '/CHANGELOG.md'
-	}, function(err, log)
-	{
-		fs.writeFileSync(paths.doc + '/CHANGELOG.md', log);
-	});
-});
-
 // calls the listed sequence of tasks in order
 gulp.task('prepare-release', function(callback)
 {
-	return runSequence('lint', 'build', 'changelog', 'bump-version', callback);
+	return runSequence('lint', 'build', 'bump-version', callback);
 });

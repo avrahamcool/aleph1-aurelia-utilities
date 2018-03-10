@@ -17,7 +17,7 @@ module.exports = function(config)
 		{
 			// Edit this to your needs
 			loadFiles: ['test/setup.js', 'test/unit/**/*.js'],
-			serveFiles: ['src/**/*.js'],
+			serveFiles: ['src/**/*.js', 'test/models/**/*.js'],
 			paths:
 			{
 				'*': '*',
@@ -37,8 +37,9 @@ module.exports = function(config)
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors:
 		{
+			'models/**/*.js': ['babel'],
 			'test/**/*.js': ['babel'],
-			'src/**/*.js': ['babel']
+			'src/**/*.js': ['babel', 'coverage']
 		},
 		'babelPreprocessor':
 		{
@@ -59,7 +60,7 @@ module.exports = function(config)
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['progress'],
+		reporters: ['progress', 'coverage'],
 
 		// web server port
 		port: 9876,
