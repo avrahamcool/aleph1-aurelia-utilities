@@ -4,8 +4,7 @@ describe('Dirty tracking a model', () =>
 {
 	it('"isDirty" should be defaulted to "false"', () =>
 	{
-		let model = new SomeModel();
-		expect(model.isDirty).toBeFalsy();
+		expect(new SomeModel().isDirty).toBeFalsy();
 	});
 
 	it('"isDirty" should be "true" after we change a tracked property', () =>

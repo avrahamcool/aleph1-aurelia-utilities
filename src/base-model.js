@@ -3,10 +3,12 @@ import { metadata as Metadata } from 'aurelia-metadata';
 import { getLogger } from 'aurelia-logging';
 import cloneDeep from 'lodash.clonedeep';
 import isEqualWith from 'lodash.isequalwith';
+import { Container } from 'aurelia-dependency-injection';
+import { validateTrigger, ValidationControllerFactory } from 'aurelia-validation';
 
 export class BaseModel
 {
-	constructor()
+	constructor(rules)
 	{
 		//defaults: configurable: false, enumerable: false, writable: false
 		Object.defineProperties(this,
@@ -14,6 +16,19 @@ export class BaseModel
 			logger: { value: getLogger(this.constructor.name) },
 			metadata: { configurable: true, value: Metadata.get('ModelMetadata', this) }
 		});
+
+		//initialize validationController if rules were defined
+		if (rules)
+		{
+			let validationController = Container.instance.get(ValidationControllerFactory).create();
+			validationController.validateTrigger = validateTrigger.change;
+			Object.defineProperty(this, 'validationController',
+			{
+				configurable: true,
+				value: validationController
+			});
+			rules.on(this);
+		}
 
 		//Initialize trackable properties from metadata
 		if (this.metadata)
@@ -27,6 +42,17 @@ export class BaseModel
 		}
 
 		this.logger.info('Model Initialized');
+	}
+
+	validate()
+	{
+		return this.validationController && this.validationController.validate();
+	}
+
+	@computedFrom('validationController.errors.length')
+	get isValid()
+	{
+		return !this.validationController || !this.validationController.errors.length;
 	}
 
 	@computedFrom('metadata.dirtyProps.length')

@@ -4,8 +4,7 @@ describe('serializing a model', () =>
 {
 	it('"serialize" should return a pojo of defined keys', () =>
 	{
-		let model = new SomeModel();
-		expect(model.serialize()).toEqual(
+		expect(new SomeModel().serialize()).toEqual(
 		{
 			someEmptyString: '',
 			someString: 'string',
@@ -21,8 +20,7 @@ describe('serializing a model', () =>
 
 	it('"serialize(true)" should return a pojo of all keys', () =>
 	{
-		let model = new SomeModel();
-		expect(model.serialize(true)).toEqual(
+		expect(new SomeModel().serialize(true)).toEqual(
 		{
 			someEmptyString: '',
 			someString: 'string',
