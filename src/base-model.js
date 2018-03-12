@@ -46,7 +46,9 @@ export class BaseModel
 
 	validate()
 	{
-		return this.validationController && this.validationController.validate();
+		return this.validationController ?
+			this.validationController.validate() :
+			Promise.resolve({ valid: true });
 	}
 
 	@computedFrom('validationController.errors.length')
@@ -68,16 +70,21 @@ export class BaseModel
 			this.metadata.original = cloneDeep(this.serialize());
 			this.metadata.dirtyProps = [];
 		}
+
 		return this;
 	}
 
-	discardChanges()
+	discardChanges(skipModelValidation)
 	{
 		if (this.isDirty)
 		{
 			this.metadata.trackableProps.forEach(prop => this[prop] = this.metadata.original[prop]);
 			this.metadata.dirtyProps = [];
 		}
+
+		if (!skipModelValidation)
+			this.validate();
+
 		return this;
 	}
 

@@ -63,4 +63,14 @@ describe('Dirty tracking a model', () =>
 		expect(model.isDirty).toBeFalsy();
 		expect(model.someString).toEqual('string');
 	});
+
+	it('"discardChanges" sould turn off "isDirty" and discard the changes regardless of validation', () =>
+	{
+		let model = new SomeModel();
+		model.someString = 'otherString';
+		expect(model.isDirty).toBeTruthy();
+		model.discardChanges(true);
+		expect(model.isDirty).toBeFalsy();
+		expect(model.someString).toEqual('string');
+	});
 });
