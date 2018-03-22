@@ -20,6 +20,25 @@ an Aurelia plugin for Model DirtyTracking, Service AutoState tracking and more.
 		@dirtyTrack() someUndeclared;
 	}
  ```
+now anywhere else in you code you can:
+ ```js
+	import { SomeModel } from 'path/to/some-odel';
+
+	export class VM
+	{
+		constructor()
+		{
+			this.model = new SomeModel();
+			
+			//changing any tracked property on the model will set `this.model.isDirty` to true.
+			this.model.discardChanges();
+			this.model.saveChanges();
+			let pojo = this.model.serialize();
+			let somePojo = <your code here>;
+			this.model.deserialize(somePojo);
+		}
+	}
+ ```
 
 ## Building The Code
 
