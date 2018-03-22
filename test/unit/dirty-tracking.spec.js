@@ -73,4 +73,32 @@ describe('Dirty tracking a model', () =>
 		expect(model.isDirty).toBeFalsy();
 		expect(model.someString).toEqual('string');
 	});
+
+	it('2 models should live imdependetly', () =>
+	{
+		let model1 = new SomeModel();
+		let model2 = new SomeModel();
+		expect(model1.isDirty).toBeFalsy();
+		expect(model2.isDirty).toBeFalsy();
+
+		model1.someString = 'otherString';
+
+		expect(model1.isDirty).toBeTruthy();
+		expect(model2.isDirty).toBeFalsy();
+
+		model2.someString = 'yoyo';
+
+		expect(model1.isDirty).toBeTruthy();
+		expect(model2.isDirty).toBeTruthy();
+
+		model1.discardChanges();
+
+		expect(model1.isDirty).toBeFalsy();
+		expect(model2.isDirty).toBeTruthy();
+
+		model2.saveChanges();
+
+		expect(model1.isDirty).toBeFalsy();
+		expect(model2.isDirty).toBeFalsy();
+	});
 });

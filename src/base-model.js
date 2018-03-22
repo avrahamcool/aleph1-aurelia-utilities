@@ -11,11 +11,21 @@ export class BaseModel
 	constructor(rules)
 	{
 		//defaults: configurable: false, enumerable: false, writable: false
-		Object.defineProperties(this,
+		Object.defineProperty(this, 'logger', { value: getLogger(this.constructor.name) });
+
+		//Initialize trackable properties from metadata
+		let sharedMetadata = Metadata.get('ModelMetadata', this);
+		if (sharedMetadata)
 		{
-			logger: { value: getLogger(this.constructor.name) },
-			metadata: { configurable: true, value: Metadata.get('ModelMetadata', this) }
-		});
+			let metadata = cloneDeep(sharedMetadata);
+			Object.defineProperty(this, 'metadata', { configurable: true, value: metadata });
+			Object.defineProperties(this, this.metadata.innerPropertyDefs);
+			Object.defineProperties(this, this.metadata.propertyDefs);
+			for (let prop in this.metadata.innerPropertyDefs)
+				this[prop] = cloneDeep(this.metadata.innerPropertyDefs[prop].value);
+
+			this.metadata.original = cloneDeep(this.serialize());
+		}
 
 		//initialize validationController if rules were defined
 		if (rules)
@@ -28,17 +38,6 @@ export class BaseModel
 				value: validationController
 			});
 			rules.on(this);
-		}
-
-		//Initialize trackable properties from metadata
-		if (this.metadata)
-		{
-			Object.defineProperties(this, this.metadata.innerPropertyDefs);
-			Object.defineProperties(this, this.metadata.propertyDefs);
-			for (let prop in this.metadata.innerPropertyDefs)
-				this[prop] = cloneDeep(this.metadata.innerPropertyDefs[prop].value);
-
-			this.metadata.original = cloneDeep(this.serialize());
 		}
 
 		this.logger.info('Model Initialized');
