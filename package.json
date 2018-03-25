@@ -1,6 +1,6 @@
 {
   "name": "aleph1-aurelia-utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "an Aurelia plugin for Model DirtyTracking, Service AutoState tracking and more.",
   "keywords": [
     "aleph1",
@@ -69,10 +69,10 @@
     },
     "devDependencies": {
       "aurelia-bootstrapper": "^2.2.0",
-      "aurelia-testing": "^1.0.0-beta.4.0.0",
       "aurelia-pal": "^1.7.0",
       "aurelia-pal-browser": "^1.7.0",
-      "aurelia-polyfills": "^1.0.0"
+      "aurelia-polyfills": "^1.0.0",
+      "aurelia-testing": "^1.0.0-beta.4.0.0"
     }
   },
   "dependencies": {

@@ -4,6 +4,7 @@
 	{
 		"indent": ["error", "tab", { "ObjectExpression": "first", "CallExpression": { "arguments": 0 } }],
 		"brace-style": ["error", "allman", { "allowSingleLine": true }],
-		"curly": ["error", "multi-or-nest"]
+		"curly": ["error", "multi-or-nest"],
+		"no-empty": ["error", {"allowEmptyCatch": true}]
 	}
 }
