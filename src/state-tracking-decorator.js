@@ -5,11 +5,8 @@ export function stateTrack()
 		let givenFunc = property && target[property];
 		if (!(givenFunc && givenFunc.constructor && givenFunc.call && givenFunc.apply)) throw Error('stateTrack Decorator should be used on function only!');
 
-		let oldFunc = `${property}_old`;
 		let busy = `${property}_isBusy`;
 		let error = `${property}_hasError`;
-
-		Object.defineProperty(target, oldFunc, { value: givenFunc, configurable: true });
 
 		descriptor.value = function(...params)
 		{
@@ -17,7 +14,7 @@ export function stateTrack()
 			this[error] = false;
 			try
 			{
-				let retVal = this[oldFunc](...params);
+				let retVal = givenFunc.call(this, ...params);
 				if (retVal && retVal.then)
 				{
 					return retVal
