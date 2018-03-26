@@ -31,7 +31,7 @@ export class BaseModel
 		if (rules)
 		{
 			let validationController = Container.instance.get(ValidationControllerFactory).create();
-			validationController.validateTrigger = validateTrigger.change;
+			validationController.validateTrigger = validateTrigger.changeOrBlur;
 			Object.defineProperty(this, 'validationController',
 			{
 				configurable: true,
