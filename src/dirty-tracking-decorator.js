@@ -13,7 +13,8 @@ export function dirtyTrack(defaultValue)
 		if (!defaultValue && descriptor && typeof descriptor.initializer === 'function')
 			defaultValue = descriptor.initializer();
 
-		delete descriptor.initializer;
+		if (descriptor)
+			delete descriptor.initializer;
 
 		const modelMetaData = Metadata.getOrCreateOwn('ModelMetadata', ModelMetadata, target);
 
