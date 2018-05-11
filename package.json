@@ -1,6 +1,6 @@
 {
   "name": "aleph1-aurelia-utilities",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "an Aurelia plugin for Model DirtyTracking, Service AutoState tracking and more.",
   "keywords": [
     "aleph1",
@@ -13,6 +13,7 @@
   "license": "MIT",
   "author": "Avraham Essoudry <essoudry@gmail.com> (https://github.com/avrahamcool)",
   "main": "dist/amd/index.js",
+  "types": "aleph1-aurelia-utilities.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/avrahamcool/aleph1-aurelia-utilities.git"
