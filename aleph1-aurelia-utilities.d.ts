@@ -4,7 +4,7 @@
 
 /**
  * a BaseClass that provides DirtyTracking and Validation capabilities
- * 
+ *
  * @export
  * @class BaseModel
  */
@@ -18,15 +18,15 @@ export class BaseModel {
 
 	/**
 	 * validates the model (if rules where applied via the constructor)
-	 * 
-	 * @returns {Promise<any>} 
+	 *
+	 * @returns {Promise<any>}
 	 * @memberof BaseModel
 	 */
 	validate(): Promise<any>;
 
 	/**
 	 * observable property - indicates if the current model state is valid (if rules where applied via the constructor)
-	 * 
+	 *
 	 * @type {boolean}
 	 * @memberof BaseModel
 	 */
@@ -34,7 +34,7 @@ export class BaseModel {
 
 	/**
 	 * observable property - indicates if the current model is dirty
-	 * 
+	 *
 	 * @type {boolean}
 	 * @memberof BaseModel
 	 */
@@ -42,24 +42,24 @@ export class BaseModel {
 
 	/**
 	 * save the changes made to the model - turns off 'isDirty'
-	 * 
-	 * @returns {BaseModel} 
+	 *
+	 * @returns {BaseModel}
 	 * @memberof BaseModel
 	 */
 	saveChanges(): BaseModel;
 
 	/**
 	 * discard the changes made to the model - turns off 'isDirty'
-	 * 
+	 *
 	 * @param {boolean} [skipModelValidation] dont trigger a validation because of the discard
-	 * @returns {BaseModel} 
+	 * @returns {BaseModel}
 	 * @memberof BaseModel
 	 */
 	discardChanges(skipModelValidation?: boolean): BaseModel;
 
 	/**
 	 * serialize the current model into POJO
-	 * 
+	 *
 	 * @param {boolean} [keepUndefinedValues] serialize also undefined values
 	 * @returns {*} a POJO of the current model
 	 * @memberof BaseModel
@@ -68,10 +68,10 @@ export class BaseModel {
 
 	/**
 	 * deserialize a given POJO into the model, taking only fields from the Model into account
-	 * 
-	 * @param {*} POJO 
+	 *
+	 * @param {*} POJO
 	 * @param {boolean} [deserializeUndefinedValues] override model properties with undefined
-	 * @returns {BaseModel} 
+	 * @returns {BaseModel}
 	 * @memberof BaseModel
 	 */
 	deserialize(POJO: any, deserializeUndefinedValues?: boolean): BaseModel;
@@ -79,7 +79,7 @@ export class BaseModel {
 
 /**
  * decorator on Model properties, will detected changes to the property and update the 'isDirty' flag accordignly
- * 
+ *
  * @export
  * @param {*} defaultValue set the initial value of a property
  */
@@ -93,3 +93,41 @@ export function dirtyTrack(defaultValue?: any);
  * @export
  */
 export function stateTrack();
+
+/**
+ * a static wrapper around localstorage to provide the option to set expirable time for items
+ *
+ * @export
+ * @class ExpireableLocalstorage
+ */
+export class ExpireableLocalstorage {
+
+	/**
+	 * get an item, returns undefined if the item is not present or expired
+	 * 
+	 * @static
+	 * @param {string} key 
+	 * @returns {*} 
+	 * @memberof ExpireableLocalstorage
+	 */
+	static getItem(key: string): any;
+
+	/**
+	 * set an item to the localstorage
+	 * 
+	 * @static
+	 * @param {string} key 
+	 * @param {*} jsonData the object to store, if a falsy is passsed - remove the item from local storage
+	 * @param {number} [expirationMin] expiration time in minutes, 0 (or any falsy) = unlimited
+	 * @memberof ExpireableLocalstorage
+	 */
+	static setItem(key: string, jsonData?: any, expirationMin?: number): void;
+
+	/**
+	 * clears the expirable local storage (only from items that was set via the expirable local storage)
+	 * 
+	 * @static
+	 * @memberof ExpireableLocalstorage
+	 */
+	static clear(): void;
+}

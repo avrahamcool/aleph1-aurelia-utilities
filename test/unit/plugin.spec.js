@@ -1,4 +1,4 @@
-import { BaseModel, dirtyTrack, stateTrack } from '../../src/index';
+import { BaseModel, dirtyTrack, stateTrack, ExpireableLocalstorage } from '../../src/index';
 
 describe('the BaseModel plugin', () =>
 {
@@ -77,5 +77,10 @@ describe('the BaseModel plugin', () =>
 			model.someFunc();
 		};
 		expect(func2).not.toThrow();
+	});
+
+	it('should export a expirableLocalStorage static class', () =>
+	{
+		expect(ExpireableLocalstorage).toBeDefined();
 	});
 });
