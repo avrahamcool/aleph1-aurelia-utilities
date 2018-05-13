@@ -121,6 +121,22 @@ now anywhere else in you code you can:
 	}
  ```
 
+## usage - Expirable local storage:
+you can use it just like he regular localStorage, but you can suplly an additional parameter (expiration time in minutes).
+when you set an item, it will be stored with his expiration date, and when you try to get the item - the time will be validated.
+if the time expired (or if the item was never set at all) you will get 'undefined' upon calling 'getItem'.
+
+all items are stored with a keyPrefix, so when you call 	'clear' you can be sure that we clear only items that was registered with this utility.
+
+ ```js
+	import { ExpireableLocalstorage } from 'aleph1-aurelia-utilities';
+
+	ExpireableLocalstorage.setItem('key', 'value', 1);
+	ExpireableLocalstorage.getItem('key');
+	ExpireableLocalstorage.clear();
+
+ ```
+
 ## Building The Code
 
 To build the code, follow these steps.
