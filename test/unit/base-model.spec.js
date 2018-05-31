@@ -2,16 +2,6 @@ import { BaseModel } from '../../src/index';
 
 describe('the BaseModel class', () =>
 {
-	it('should have a "logger" property', () =>
-	{
-		expect(new BaseModel()).toHaveMember('logger');
-	});
-
-	it('"logger" property should not be enumerable', () =>
-	{
-		expect(Object.keys(new BaseModel())).not.toContain('logger');
-	});
-
 	it('should have a "isDirty" getter', () =>
 	{
 		expect(new BaseModel()).toHaveMember('isDirty');

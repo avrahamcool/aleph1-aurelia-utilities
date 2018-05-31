@@ -6,4 +6,6 @@ export class ModelMetadata
 
 	propertyDefs = {};
 	innerPropertyDefs = {};
+
+	innerPropertyModelsDefs = {};
 }

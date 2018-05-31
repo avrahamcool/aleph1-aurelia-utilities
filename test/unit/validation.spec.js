@@ -40,6 +40,6 @@ describe('using BaseModel with validation', () =>
 
 	it('"isValid" should be defaulted to "true"', () =>
 	{
-		expect(new SomeModelWithValidation().isValid).toBeTruthy();
+		expect(new SomeModelWithValidation().isValid).toEqual(true);
 	});
 });

@@ -86,6 +86,23 @@ export class BaseModel {
 export function dirtyTrack(defaultValue?: any);
 
 /**
+ * decorator on Model properties (array), will detected changes to the array (even changes to the items in the array)and update the 'isDirty' flag accordignly
+ *
+ * @export
+ * @param {*} defaultValue set the initial value of a property
+ */
+export function dirtyTrackArray(defaultValue?: any);
+
+/**
+ * decorator on Model properties (Model objects), will detected changes to the object (even changes to the nested propertise) and update the 'isDirty' flag accordignly
+ *
+ * @export
+ * @param {*} modelType must be the type of a model inheriting from BaseModel
+ */
+export function dirtyTrackModel(modelType: any);
+
+
+/**
  * decorator on any function.
  * will create 2 additional flags
  * <functionName>_isBusy:bool

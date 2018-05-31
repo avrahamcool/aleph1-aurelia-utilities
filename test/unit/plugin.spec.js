@@ -1,4 +1,4 @@
-import { BaseModel, dirtyTrack, stateTrack, ExpireableLocalstorage } from '../../src/index';
+import { BaseModel, dirtyTrack, dirtyTrackArray, dirtyTrackModel, stateTrack, ExpireableLocalstorage } from '../../src/index';
 
 describe('the BaseModel plugin', () =>
 {
@@ -37,6 +37,92 @@ describe('the BaseModel plugin', () =>
 			@dirtyTrack()
 			class WrongModel
 			{
+				someString = 'string';
+			}
+			let model = new WrongModel();
+			model.someString = 'other';
+		};
+		expect(func).toThrow();
+	});
+
+	it('should export a dirtyTrackArray decorator', () =>
+	{
+		expect(dirtyTrackArray).toEqual(jasmine.any(Function));
+	});
+
+	it('dirtyTrackArray decorator should be applied only on class inheriting from BaseModel', () =>
+	{
+		let func = function()
+		{
+			class WrongModel
+			{
+				@dirtyTrackArray()
+				someString = 'string';
+			}
+			let model = new WrongModel();
+			model.someString = 'other';
+		};
+		expect(func).toThrow();
+	});
+
+	it('dirtyTrackModel decorator should be applied only on properties', () =>
+	{
+		let func = function()
+		{
+			@dirtyTrackModel(BaseModel)
+			class WrongModel
+			{
+				someString = 'string';
+			}
+			let model = new WrongModel();
+			model.someString = 'other';
+		};
+		expect(func).toThrow();
+	});
+
+	it('should export a dirtyTrackModel decorator', () =>
+	{
+		expect(dirtyTrackModel).toEqual(jasmine.any(Function));
+	});
+
+	it('dirtyTrackModel decorator should be applied only on class inheriting from BaseModel', () =>
+	{
+		let func = function()
+		{
+			class WrongModel
+			{
+				@dirtyTrackModel(BaseModel)
+				someString = 'string';
+			}
+			let model = new WrongModel();
+			model.someString = 'other';
+		};
+		expect(func).toThrow();
+	});
+
+	it('dirtyTrackModel decorator should be applied only on properties', () =>
+	{
+		let func = function()
+		{
+			@dirtyTrackModel(BaseModel)
+			class WrongModel
+			{
+				someString = 'string';
+			}
+			let model = new WrongModel();
+			model.someString = 'other';
+		};
+		expect(func).toThrow();
+	});
+
+	it('dirtyTrackModel decorator must get a parameter of type inheriting from BaseModel', () =>
+	{
+		let func = function()
+		{
+			class TypeNotInheritingFromBase { }
+			class WrongModel extends BaseModel
+			{
+				@dirtyTrackModel(TypeNotInheritingFromBase)
 				someString = 'string';
 			}
 			let model = new WrongModel();

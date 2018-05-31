@@ -65,10 +65,10 @@ describe("state tracking a model", () =>
 		let obj = new SomeClass();
 
 		obj.asyncFunction();
-		expect(obj.asyncFunction_isBusy).toBeTruthy();
+		expect(obj.asyncFunction_isBusy).toEqual(true);
 
 		let badPromise = obj.asyncFunctionError();
-		expect(obj.asyncFunctionError_isBusy).toBeTruthy();
+		expect(obj.asyncFunctionError_isBusy).toEqual(true);
 		badPromise.catch(() => {});
 	});
 
@@ -78,15 +78,15 @@ describe("state tracking a model", () =>
 
 		obj.asyncFunction().then(() =>
 		{
-			expect(obj.asyncFunction_isBusy).toBeFalsy();
+			expect(obj.asyncFunction_isBusy).toEqual(false);
 		});
 
 		obj.syncFunction();
-		expect(obj.syncFunction_isBusy).toBeFalsy();
+		expect(obj.syncFunction_isBusy).toEqual(false);
 
 		obj.asyncFunctionError().catch(() =>
 		{
-			expect(obj.asyncFunctionError_isBusy).toBeFalsy();
+			expect(obj.asyncFunctionError_isBusy).toEqual(false);
 		});
 
 		try
@@ -95,7 +95,7 @@ describe("state tracking a model", () =>
 		}
 		catch (_)
 		{
-			expect(obj.syncFunctionError_isBusy).toBeFalsy();
+			expect(obj.syncFunctionError_isBusy).toEqual(false);
 		}
 	});
 
