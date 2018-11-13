@@ -1,6 +1,5 @@
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/alerts/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/alerts/)
 
 
 # aleph1-aurelia-utilities
