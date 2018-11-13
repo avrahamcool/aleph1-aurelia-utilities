@@ -1,4 +1,5 @@
-
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/context:javascript)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/context:javascript)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/alerts/)
 
 
