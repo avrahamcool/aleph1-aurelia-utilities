@@ -45,7 +45,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
-    "karma-jasmine-matchers": "^3.7.0",
+    "karma-jasmine-matchers": "^4.0.2",
     "karma-jspm": "^2.2.3",
     "object.assign": "^4.0.4",
     "require-dir": "^1.0.0",
