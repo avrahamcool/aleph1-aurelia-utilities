@@ -39,7 +39,7 @@
     "isparta": "^4.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "jasmine-core": "^3.4.0",
-    "jasmine-expect": "^3.8.3",
+    "jasmine-expect": "^4.0.2",
     "karma": "^4.2.0",
     "karma-babel-preprocessor": "^7.0.0",
     "karma-chrome-launcher": "^2.0.0",
