@@ -5,7 +5,7 @@ script:
   - echo 'Build starts!!'
   - echo 'Installing Deps!'
   - npm install
-  - npm install -g jspm karma-cli
+  - npm install -g jspm@0.16.53 karma-cli
   - jspm install
   - jspm dl-loader
   - echo 'Testing!'
