@@ -1,6 +1,6 @@
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/context:javascript)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/avrahamcool/aleph1-aurelia-utilities.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/avrahamcool/aleph1-aurelia-utilities/alerts/)
-
+[![Build Status](https://travis-ci.com/avrahamcool/aleph1-aurelia-utilities.svg?branch=master)](https://travis-ci.com/avrahamcool/aleph1-aurelia-utilities)
 
 # aleph1-aurelia-utilities
 an Aurelia plugin for Model DirtyTracking, function BusyState tracking and more.
