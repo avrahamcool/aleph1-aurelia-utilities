@@ -1,4 +1,4 @@
-import { Outer, Inner } from '../models/nested-models';
+import { Outer } from '../models/nested-models';
 
 describe('serializing a nested model', () =>
 {
