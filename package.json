@@ -40,7 +40,7 @@
     "istanbul": "^1.0.0-alpha.2",
     "jasmine-core": "^3.4.0",
     "jasmine-expect": "^4.0.2",
-    "karma": "^4.2.0",
+    "karma": "^6.0.4",
     "karma-babel-preprocessor": "^7.0.0",
     "karma-chrome-launcher": "^3.0.0",
     "karma-coverage": "^2.0.1",
